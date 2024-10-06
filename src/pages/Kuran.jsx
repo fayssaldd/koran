@@ -49,7 +49,7 @@ export default function Kuran() {
         const uniqueRewayas = [...new Set(reciters.map(reciter => reciter.rewaya))];
         const recitersWithReways = rewayaSelect && reciters.filter(rc=>rc.rewaya == rewayaSelect )
   return (
-    <div dir='rtl' className='p-10 lg:flex mt-12'>
+    <div dir='rtl' className='p-10 lg:flex mt-12 h-[90vh]'>
             <div className='lg:w-1/5 max-sm:w-full lg:ml-8 lg:shadow-xl lg:border lg:p-4'>
                 <div className='flex flex-col max-sm:flex-col'>
                     <div className='mb-4 m-1  max-sm:w-full'>
@@ -87,9 +87,6 @@ export default function Kuran() {
                     </div>
                 </div>
                 <div className='mb-8'>
-                    <p className='text-center mb-4'>
-                        قم بتحديد الرواية و القارئ أولا
-                    </p>
                     <p className='flex max-sm:flex-col flex-col items-start justify-start'>
                         <span className='max-sm:mx-0 mb-4'>
                             <b className='underline'>القارء الحالي : </b>
@@ -115,19 +112,24 @@ export default function Kuran() {
                 </div>
             </div>
           
+            <div className='lg:w-4/5 lg:max-h-[80vh] lg:rounded-2xl lg:bg-gray-100 lg:p-5 dark:bg-gray-700'>
             <div className='
-                    lg:bg-gray-100 lg:p-5
-                    lg:rounded-2xl
+                    os-viewport os-viewport-native-scrollbars-invisible
                     flex 
-                    lg:w-4/5 items-center justify-between max-sm:w-full flex-wrap
-                    lg:max-h-[80vh] lg:overflow-y-scroll 
-                    lg:[&::-webkit-scrollbar]:w-2
-                     lg:[&::-webkit-scrollbar-track]:bg-gray-100
-                    lg:[&::-webkit-scrollbar-thumb]:bg-gray-300
-                     lg:dark:[&::-webkit-scrollbar-track]:bg-neutral-700
-                     lg:dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
+                    h-full
+                     items-center justify-center w-full flex-wrap
+                     lg:overflow-y-scroll 
+                    [&::-webkit-scrollbar]:w-2
+                    [&::-webkit-scrollbar-track]:bg-gray-100
+                    [&::-webkit-scrollbar-thumb]:bg-gray-300
+                    dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+                    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500
                     '
-                    >
+            >
+                {
+                filteredSuras.length == 0 ? <p className='text-center mb-4'>
+                                                قم بتحديد الرواية و القارئ أولا
+                                            </p> : <>
                 
                 {
                      surahSearch === null ? filteredSuras?.map((sr)=>
@@ -138,6 +140,7 @@ export default function Kuran() {
                                        hover:cursor-pointer hover:bg-yellow-500
                                        hover:scale-x-105 hover:text-white  
                                        bg-white
+                                       dark:bg-gray-800
                                        ${surahPlayer?.id == sr.id && '!bg-yellow-500 text-white'}  
                             `}
                         >
@@ -168,6 +171,7 @@ export default function Kuran() {
                                        hover:cursor-pointer hover:bg-yellow-500
                                        hover:scale-x-105 hover:text-white  
                                        bg-white
+                                       dark:bg-gray-800
                                        ${surahPlayer?.id == sr.id && '!bg-yellow-500 text-white'} 
                                 `}
                             >
@@ -191,6 +195,11 @@ export default function Kuran() {
                     }
                     </>
                 }
+                </>
+                }
+                
+                
+            </div>
             </div>
             <div>
              {/* url='http://server8.mp3quran.net/ahmad_huth/002.mp3' */}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
-// import { ModeToggle } from './components/mode-toggle';
+import { ModeToggle } from '../components/mode-toggle';
 import './style.css'
 
 export default function NavBar() {
@@ -30,7 +30,7 @@ export default function NavBar() {
               <div className="flex max-sm:justify-end max-sm:w-full flex-shrink-0 pr-5 items-center">
                 {/* <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"/> */}
                <span className={'sm:hidden '}>
-                 {/* <ModeToggle /> */}
+                 <ModeToggle />
                </span>
                 <p className={`khatArabie ml-20 text-green-600 ${pathname== '/' && 'text-white'}`}>القرآن الكريم</p>
               </div>
@@ -41,7 +41,7 @@ export default function NavBar() {
                   <Link tp={'/'} className={`rounded-md px-3 ${pathname== '/' && 'text-white'} py-2 text-sm font-medium hover:bg-gray-700 hover:text-white`}>الرئيسية</Link>
                   {/* <a href="#" className="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white">Projects</a>
                   <a href="#" className="rounded-md px-3 py-2 text-sm font-medium  hover:bg-gray-700 hover:text-white">Calendar</a> */}
-                  {/* <ModeToggle/> */}
+                  <ModeToggle />
                 </div>
                 
               </div>

@@ -7,13 +7,16 @@ import Home from './pages/Home'
 import Kuran from './pages/Kuran'
 import { RouterProvider } from 'react-router-dom'
 import router from './router'
+import { ThemeProvider } from './components/theme-provider'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <RouterProvider router={router}/>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router}/>
+      </ThemeProvider>
     </>
   )
 }
