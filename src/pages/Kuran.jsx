@@ -45,7 +45,15 @@ export default function Kuran() {
             fetchDataReciters()
             fetchDataChapters()
         },[])
-        
+
+        // Update only the id in the surahPlayer object
+        const handleEnd = () => {
+            // Increment surahPlayer.id by 1, or reset to 1 if it exceeds 112
+            const newId = surahPlayer.id < 112 ? surahPlayer.id + 1 : 1;
+            const nexSurah = filteredSuras.filter(sr=>sr.id == newId).map(s=>(s))            
+            // Update only the id in the surahPlayer object
+            setSurahPlayer(...nexSurah);
+        };
         const uniqueRewayas = [...new Set(reciters.map(reciter => reciter.rewaya))];
         const recitersWithReways = rewayaSelect && reciters.filter(rc=>rc.rewaya == rewayaSelect )
   return (
@@ -100,7 +108,7 @@ export default function Kuran() {
                     </p>
                     <p className='w-full mt-4' >
                             <Input  onChange={(e)=>{
-                                        console.log(e.target.value);
+                                        // console.log(e.target.value);
                                         
                                         setSurahSeachre(filteredSuras?.filter(sr=>sr.name_arabic.includes(e.target.value)))
                                     }} 
@@ -210,6 +218,7 @@ export default function Kuran() {
                         url={`${reciterDetail.Server}/${('00'+surahPlayer.id).slice(-3)}.mp3`}
                         controls={true}
                         playing={true}
+                        onEnded={handleEnd}
                         // loop={true}
                         width='100%'
                         className={"fixed bottom-0 right-0"}
