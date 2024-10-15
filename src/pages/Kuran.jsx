@@ -49,7 +49,7 @@ export default function Kuran() {
         // Update only the id in the surahPlayer object
         const handleEnd = () => {
             // Increment surahPlayer.id by 1, or reset to 1 if it exceeds 112
-            const newId = surahPlayer.id < 112 ? surahPlayer.id + 1 : 1;
+            const newId = surahPlayer.id < 114 ? surahPlayer.id + 1 : 1;
             const nexSurah = filteredSuras.filter(sr=>sr.id == newId).map(s=>(s))            
             // Update only the id in the surahPlayer object
             setSurahPlayer(...nexSurah);
